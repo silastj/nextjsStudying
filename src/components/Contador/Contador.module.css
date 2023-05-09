@@ -1,0 +1,13 @@
+.contador{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+}
+
+.contador button{
+  padding: 10px 15px;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+}
