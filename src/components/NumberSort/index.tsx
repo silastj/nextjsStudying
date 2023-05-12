@@ -1,26 +1,24 @@
 'use client';
 import { useState } from 'react'
 import styles from './NumberSort.module.css'
+import{ mega } from '../NumberSort/mega'
 
 const NumberSort = () => {
-const [ gameNumber, setGameNumber ] = useState<number[]>([])
+const [ qtde, setQtde ] = useState<number>(0)
+const [ sortNumber, setSortNumber ] = useState<number[]>([])
 
-  function gameSort() {
-    const newNumbers = []
-    for(let i = 0; i < 6; i ++) {
-      newNumbers.push(GenerateRandomNumber())
-    }
-    setGameNumber(newNumbers)
-  }
-
-  function GenerateRandomNumber(): number{
-    return Math.floor(Math.random() * 100) + 10 <= 60 ? Math.floor(Math.random() * 10) : 10
-  }
-  
   return (
     <div className={styles.numbersort}>
-      <button onClick={gameSort}>Gerador de Números</button>
-      <span>Números do Sorteio: {gameNumber.join(' - ')}</span>
+      <p>Digite a quantidade de números:</p>
+      <input 
+        type="number" 
+        min={1} 
+        max={20} 
+        value={qtde}
+        onChange={ev => setQtde(+ev.target.value)}
+      />
+      <button onClick={() => setSortNumber(mega(qtde))}>Gerador de Números</button>
+      <p>6 Números do Sorteio: <span>{sortNumber.join(' - ')}</span></p>
     </div>
   )
 }
